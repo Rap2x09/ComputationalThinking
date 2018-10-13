@@ -25,12 +25,15 @@ def list_of_items(items):
 
     """
     #pass
-    #for a in items:
-    #    b = str(items[a])
-    #    return (b)
-    items_list = ",".join(map(str, items))
-    return items_list
+    lists = []
+    #key_name = ['name']
+    for a in items:
+        #for b in a:
+        lists.append(a.get('name'))
+            #lists.append(a[b])
 
+    #lists1 = ",".join(lists).strip()
+    return ", ".join(lists)
 
 def print_room_items(room):
     """This function takes a room as an input and nicely displays a list of items
@@ -54,7 +57,12 @@ def print_room_items(room):
     Note: <BLANKLINE> here means that doctest should expect a blank line.
 
     """
-    pass
+    #pass
+    #if room == "Admins"
+    #    continue
+    #else:
+    if room["items"] != []:
+        print("There is " + list_of_items(room["items"]) + " here.\n")
 
 
 def print_inventory_items(items):
@@ -67,7 +75,8 @@ def print_inventory_items(items):
     <BLANKLINE>
 
     """
-    pass
+    #pass
+    print("You have " + list_of_items(items) +".\n")
 
 
 def print_room(room):
