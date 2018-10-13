@@ -132,6 +132,7 @@ def print_room(room):
     # Display room description
     print(room["description"])
     print()
+    print_room_items(room)
 
     #
     # COMPLETE ME!
