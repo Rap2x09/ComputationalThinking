@@ -132,11 +132,11 @@ def print_room(room):
     # Display room description
     print(room["description"])
     print()
-    print_room_items(room)
-
+    
     #
     # COMPLETE ME!
     #
+    print_room_items(room)
 
 def exit_leads_to(exits, direction):
     """This function takes a dictionary of exits and a direction (a particular
@@ -208,7 +208,13 @@ def print_menu(exits, room_items, inv_items):
     #
     # COMPLETE ME!
     #
-    
+    for items in room_items:
+        print("TAKE " + items["id"].upper() + " to take " + items["name"] + ".")
+
+    for items in inv_items:
+        print("DROP " + items["id"].upper() + " to drop " + items["name"] + ".")
+
+
     print("What do you want to do?")
 
 
@@ -237,7 +243,29 @@ def execute_go(direction):
     (and prints the name of the room into which the player is
     moving). Otherwise, it prints "You cannot go there."
     """
-    pass
+    #pass
+    exits = current_room["exits"]
+    #if is_valid_exit(exits, direction):
+    #    return move(exits, direction)
+    #else:
+    #    print("You cannot go there.")
+    #    for direction in exits:
+
+    #current_room = {}
+    #for a in rooms:
+    #current_room = []
+                         
+    #exits = rooms["exits"]
+    if is_valid_exit(exits, direction):
+        #current_room =
+        curret_room = move(exits, direction)
+        print_room(current_room)
+        #main()
+        #current_room = rooms[exits[direction]]
+    else:
+        print("You cannot go there.")
+            
+        
 
 
 def execute_take(item_id):
