@@ -244,7 +244,17 @@ def execute_go(direction):
     moving). Otherwise, it prints "You cannot go there."
     """
     #pass
+    
+    global current_room
+
     exits = current_room["exits"]
+    if is_valid_exit(exits, direction):
+        current_room = move(exits, direction)
+    else:
+        print("You cannot go there.")
+    #return current_room
+    #main()
+        #exits = current_room["exits"]
     #if is_valid_exit(exits, direction):
     #    return move(exits, direction)
     #else:
@@ -253,18 +263,26 @@ def execute_go(direction):
 
     #current_room = {}
     #for a in rooms:
-    #current_room = []
+    #move(exits, direction)
                          
     #exits = rooms["exits"]
-    if is_valid_exit(exits, direction):
+    #for a in exits:
+    #    current_room = 
+    #if is_valid_exit(exits, direction):
+        #current_room = move(exits, direction)
+
+        #for a in exits:
+            #current_room = exits[a][direction]
         #current_room =
-        curret_room = move(exits, direction)
-        print_room(current_room)
+    #    curret_room = move(exits, direction)
+    #    print_room(current_room)
         #main()
         #current_room = rooms[exits[direction]]
-    else:
-        print("You cannot go there.")
-            
+    #else:
+    #    print("You cannot go there.")
+    #for a in direction:
+            #print(exits[a])
+        #print(current_room["exits"])
         
 
 
