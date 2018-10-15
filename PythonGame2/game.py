@@ -292,8 +292,33 @@ def execute_take(item_id):
     there is no such item in the room, this function prints
     "You cannot take that."
     """
-    pass
-    
+    #pass
+    current_items = []
+
+    for items in current_room["items"]:        
+        current_items.append(items["id"])
+        
+    if item_id in current_items:
+        if item_id == "biscuits":
+            inventory.append(item_biscuits)
+            current_room["items"].remove(item_biscuits)
+        elif item_id == "id":
+            inventory.append(item_id)
+            current_room["items"].remove(item_id)
+        elif item_id == "money":
+            inventory.append(item_)
+            current_room["items"].remove(item_money)
+        elif item_id == "laptop":
+            inventory.append(item_laptop)
+            current_room["items"].remove(item_laptop)
+        elif item_id == "pen":
+            inventory.append(item_pen)
+            current_room["items"].remove(item_pen)
+        elif item_id == "handbook":
+            inventory.append(item_handbook)
+            current_room["items"].remove(item_handbook)
+    else:
+        print("You cannot take that")
 
 def execute_drop(item_id):
     """This function takes an item_id as an argument and moves this item from the
