@@ -76,7 +76,10 @@ def print_inventory_items(items):
 
     """
     #pass
-    print("You have " + list_of_items(items) +".\n")
+    if items == []:
+        print("You have no item in your inventory.\n")
+    else:
+        print("You have " + list_of_items(items) +".\n")
 
 
 def print_room(room):
@@ -303,10 +306,10 @@ def execute_take(item_id):
             inventory.append(item_biscuits)
             current_room["items"].remove(item_biscuits)
         elif item_id == "id":
-            inventory.append(item_id)
-            current_room["items"].remove(item_id)
+            inventory.append(globals()["item_id"])
+            current_room["items"].remove(globals()["item_id"])
         elif item_id == "money":
-            inventory.append(item_)
+            inventory.append(item_money)
             current_room["items"].remove(item_money)
         elif item_id == "laptop":
             inventory.append(item_laptop)
@@ -325,7 +328,42 @@ def execute_drop(item_id):
     player's inventory to list of items in the current room. However, if there is
     no such item in the inventory, this function prints "You cannot drop that."
     """
-    pass
+    #pass
+
+    inventory_items = []
+
+    for items in inventory:
+        inventory_items.append(items["id"])
+    
+    if item_id in inventory_items:
+        if item_id == "id":
+            inventory.remove(globals()["item_id"])
+            current_room["items"].append(globals()["item_id"])
+            
+        elif item_id == "laptop":
+            inventory.remove(item_laptop)
+            current_room["items"].append(item_laptop)
+            
+        elif item_id == "money":
+            inventory.remove(item_money)
+            current_room["items"].append(item_money)
+            
+        elif item_id == "biscuits":
+            inventory.remove(item_biscuits)
+            current_room["items"].append(item_biscuits)
+            
+        elif item_id == "pen":
+            inventory.remove(item_pen)
+            current_room["items"].append(item_pen)
+            
+        elif item_id == "handbook":
+            inventory.remove(item_handbook)
+            current_room["items"].append(item_handbook)
+    else:
+        print("You cannot drop that")
+    
+        
+    
     
 
 def execute_command(command):
