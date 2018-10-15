@@ -39,7 +39,7 @@ item_biscuits = {
 
     "description": "A pack of biscuits.",
 
-    "mass" = 0.5
+    "mass" : 0.5
 }
 
 item_pen = {

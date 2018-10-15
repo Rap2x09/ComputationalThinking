@@ -239,6 +239,15 @@ def is_valid_exit(exits, chosen_exit):
     """
     return chosen_exit in exits
 
+def check_mass():
+    item_mass = []
+
+    for m in inventory:
+        item_mass.append(m["mass"])
+
+    total_mass = sum(item_mass)
+
+    return total_mass
 
 def execute_go(direction):
     """This function, given the direction (e.g. "south") updates the current room
@@ -304,22 +313,57 @@ def execute_take(item_id):
     if item_id in current_items:
         if item_id == "biscuits":
             inventory.append(item_biscuits)
-            current_room["items"].remove(item_biscuits)
+            weight_check = check_mass()
+            if weight_check > 3:
+                inventory.remove(item_biscuits)
+                print("Cannot take item. Inventory is too heavy.")
+            else:
+                current_room["items"].remove(item_biscuits)
+                
         elif item_id == "id":
             inventory.append(globals()["item_id"])
-            current_room["items"].remove(globals()["item_id"])
+            weight_check = check_mass()
+            if weight_check > 3:
+                inventory.remove(globals()["item_biscuits"])
+                print("Cannot take item. Inventory is too heavy.")
+            else:
+                current_room["items"].remove(globals()["item_id"])
+                
         elif item_id == "money":
             inventory.append(item_money)
-            current_room["items"].remove(item_money)
+            weight_check = check_mass()
+            if weight_check > 3:
+                inventory.remove(item_money)
+                print("Cannot take item. Inventory is too heavy.")
+            else:
+                current_room["items"].remove(item_money)
+                
         elif item_id == "laptop":
             inventory.append(item_laptop)
-            current_room["items"].remove(item_laptop)
+            weight_check = check_mass()
+            if weight_check > 3:
+                inventory.remove(item_laptop)
+                print("Cannot take item. Inventory is too heavy.")
+            else:
+                current_room["items"].remove(item_laptop)
+                
         elif item_id == "pen":
             inventory.append(item_pen)
-            current_room["items"].remove(item_pen)
+            weight_check = check_mass()
+            if weight_check > 3:
+                inventory.remove(item_pen)
+                print("Cannot take item. Inventory is too heavy.")
+            else:
+                current_room["items"].remove(item_pen)
+                
         elif item_id == "handbook":
             inventory.append(item_handbook)
-            current_room["items"].remove(item_handbook)
+            weight_check = check_mass()
+            if weight_check > 3:
+                inventory.remove(item_handbook)
+                print("Cannot take item. Inventory is too heavy.")
+            else:
+                current_room["items"].remove(item_handbook)
     else:
         print("You cannot take that")
 
