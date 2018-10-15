@@ -376,6 +376,8 @@ def execute_drop(item_id):
 
     inventory_items = []
 
+    #print(rooms["Reception"][items]["id"])
+
     for items in inventory:
         inventory_items.append(items["id"])
     
@@ -496,11 +498,33 @@ def main():
         # Execute the player's command
         execute_command(command)
 
+        #if current_room["items"] ==
+        if len(rooms["Tutor"]["items"]) == 6:
+            print("Well done! Thank you for bringing all these items.")
+            print("You can go home now")
+            break
+
 
 
 # Are we being run as a script? If so, run main().
 # '__main__' is the name of the scope in which top-level code executes.
 # See https://docs.python.org/3.4/library/__main__.html for explanation
 if __name__ == "__main__":
+
+    print("""
+Welcome to COMSC Adventure Game
+
+Your tutor has asked you to drop in his/her office the following items:
+    > id
+    > laptop
+    > money
+    > a pack of biscuits
+    > a pen
+    > a student handbook
+
+On your way to your personal tutor's office you realised some items have
+dropped in your bag. You must now find all the missing items and take them
+to your personal tutor's office to complete the task. Good luck!""")
+    
     main()
 
