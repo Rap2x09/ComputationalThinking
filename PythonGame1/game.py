@@ -40,8 +40,6 @@ def remove_spaces(text):
     >>> remove_spaces("   ")
     ''
     """
-    #pass
-    #text = " ".join(text.split())
     space_remove = text.strip()
     extra_space_remove = space_remove.replace("   ", "  ")
     return extra_space_remove
@@ -62,12 +60,8 @@ def normalise_input(user_input):
     #pass
     punct_removed = remove_punct(user_input).lower()
     space_removed = remove_spaces(punct_removed)
-    #remove_punct(user_input)
-    #remove_spaces(user_input)
-    return space_removed
-    #return user_input.remove_punct(text), user_input.remove_spaces(text)
-    #user_input.remove_spaces(text)
 
+    return space_removed
     
 def display_room(room):
     """This function takes a room as an input and nicely displays its name
@@ -89,11 +83,9 @@ def display_room(room):
     Note: <BLANKLINE> here means that doctest should expect a blank line.
     """
     # pass # The pass statement does nothing. Replace it with the body of your function.
-#    room = rooms
+
     print("\n" + room["name"].upper() + "\n\n" + room["description"] + "\n")
-#    print("")
-#    print(room["description"])
-#    print("")
+
 
     
 def exit_leads_to(exits, direction):
@@ -127,8 +119,6 @@ def print_menu_line(direction, leads_to):
     """
     #pass
 
-#    leads_to = rooms["name"]
-#    print("Go" + direction.rooms["exits"] + "to" + leads_to.rooms["name"])
     print("Go", direction.upper(), "to", leads_to + ".")
     
 
@@ -176,10 +166,7 @@ def is_valid_exit(exits, user_input):
     True
     """
     #pass
-    #if user_input in exits:
-    #    return True
-    #else:
-    #    return False
+
     return user_input in exits
 
 def menu(exits):
@@ -227,10 +214,7 @@ def move(exits, direction):
     False
     """
     #pass
-    #if direction in exits:
-    #    return True
-    #else:
-    #    False
+
     return rooms[exits[direction]]
 
 
