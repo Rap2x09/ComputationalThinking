@@ -29,11 +29,6 @@ def filter_words(words, skip_words):
     """
     #pass
     
-    #if words in skip_words:        
-    #    filter1 = words.remove(skip_words)
-    #    return filter1
-    #words = words.replace(skip_words, '')
-    #return words
     filter1 = [x for x in words if x not in skip_words]
     return filter1
 
@@ -86,11 +81,10 @@ def normalise_input(user_input):
     """
     # Remove punctuation and convert to lower case
     no_punct = remove_punct(user_input).lower().split()
-    #player_input = user_input.split()
-    normalise_filter = filter_words(no_punct, skip_words)
-
-    return normalise_filter
 
     #
     # COMPLETE ME!
     #
+    normalise_filter = filter_words(no_punct, skip_words)
+
+    return normalise_filter

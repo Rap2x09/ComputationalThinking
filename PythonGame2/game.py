@@ -26,13 +26,10 @@ def list_of_items(items):
     """
     #pass
     lists = []
-    #key_name = ['name']
-    for a in items:
-        #for b in a:
-        lists.append(a.get('name'))
-            #lists.append(a[b])
 
-    #lists1 = ",".join(lists).strip()
+    for a in items:
+        lists.append(a.get('name'))
+
     return ", ".join(lists)
 
 def print_room_items(room):
@@ -58,9 +55,6 @@ def print_room_items(room):
 
     """
     #pass
-    #if room == "Admins"
-    #    continue
-    #else:
     if room["items"] != []:
         print("There is " + list_of_items(room["items"]) + " here.\n")
 
@@ -205,7 +199,7 @@ def print_menu(exits, room_items, inv_items):
     print("You can:")
     # Iterate over available exits
     for direction in exits:
-        # Print the exit name and where it leads to
+        # Prints the exit name and where it leads to
         print_exit(direction, exit_leads_to(exits, direction))
 
     #
@@ -216,7 +210,6 @@ def print_menu(exits, room_items, inv_items):
 
     for items in inv_items:
         print("DROP " + items["id"].upper() + " to drop " + items["name"] + ".")
-
 
     print("What do you want to do?")
 
@@ -264,39 +257,6 @@ def execute_go(direction):
         current_room = move(exits, direction)
     else:
         print("You cannot go there.")
-    #return current_room
-    #main()
-        #exits = current_room["exits"]
-    #if is_valid_exit(exits, direction):
-    #    return move(exits, direction)
-    #else:
-    #    print("You cannot go there.")
-    #    for direction in exits:
-
-    #current_room = {}
-    #for a in rooms:
-    #move(exits, direction)
-                         
-    #exits = rooms["exits"]
-    #for a in exits:
-    #    current_room = 
-    #if is_valid_exit(exits, direction):
-        #current_room = move(exits, direction)
-
-        #for a in exits:
-            #current_room = exits[a][direction]
-        #current_room =
-    #    curret_room = move(exits, direction)
-    #    print_room(current_room)
-        #main()
-        #current_room = rooms[exits[direction]]
-    #else:
-    #    print("You cannot go there.")
-    #for a in direction:
-            #print(exits[a])
-        #print(current_room["exits"])
-        
-
 
 def execute_take(item_id):
     """This function takes an item_id as an argument and moves this item from the
@@ -376,8 +336,6 @@ def execute_drop(item_id):
 
     inventory_items = []
 
-    #print(rooms["Reception"][items]["id"])
-
     for items in inventory:
         inventory_items.append(items["id"])
     
@@ -406,11 +364,7 @@ def execute_drop(item_id):
             inventory.remove(item_handbook)
             current_room["items"].append(item_handbook)
     else:
-        print("You cannot drop that")
-    
-        
-    
-    
+        print("You cannot drop that")    
 
 def execute_command(command):
     """This function takes a command (a list of words as returned by
@@ -486,31 +440,6 @@ def move(exits, direction):
 # This is the entry point of our program
 def main():
 
-    # Main game loop
-    while True:
-        # Display game status (room description, inventory etc.)
-        print_room(current_room)
-        print_inventory_items(inventory)
-
-        # Show the menu with possible actions and ask the player
-        command = menu(current_room["exits"], current_room["items"], inventory)
-
-        # Execute the player's command
-        execute_command(command)
-
-        #if current_room["items"] ==
-        if len(rooms["Tutor"]["items"]) == 6:
-            print("Well done! Thank you for bringing all these items.")
-            print("You can go home now")
-            break
-
-
-
-# Are we being run as a script? If so, run main().
-# '__main__' is the name of the scope in which top-level code executes.
-# See https://docs.python.org/3.4/library/__main__.html for explanation
-if __name__ == "__main__":
-
     print("""
 Welcome to COMSC Adventure Game
 
@@ -525,6 +454,29 @@ Your tutor has asked you to drop in his/her office the following items:
 On your way to your personal tutor's office you realised some items have
 dropped in your bag. You must now find all the missing items and take them
 to your personal tutor's office to complete the task. Good luck!""")
+
+    # Main game loop
+    while True:
+        # Display game status (room description, inventory etc.)
+        print_room(current_room)
+        print_inventory_items(inventory)
+
+        # Show the menu with possible actions and ask the player
+        command = menu(current_room["exits"], current_room["items"], inventory)
+
+        # Execute the player's command
+        execute_command(command)
+
+        #Victory condition
+        if len(rooms["Tutor"]["items"]) == 6:
+            print("Well done! Thank you for bringing all these items.")
+            print("You can go home now")
+            break
+
+# Are we being run as a script? If so, run main().
+# '__main__' is the name of the scope in which top-level code executes.
+# See https://docs.python.org/3.4/library/__main__.html for explanation
+if __name__ == "__main__":
     
     main()
 
