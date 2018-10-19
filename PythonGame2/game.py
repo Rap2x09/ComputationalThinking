@@ -284,7 +284,7 @@ def execute_take(item_id):
             inventory.append(globals()["item_id"])
             weight_check = check_mass()
             if weight_check > 3:
-                inventory.remove(globals()["item_biscuits"])
+                inventory.remove(globals()["item_id"])
                 print("Cannot take item. Inventory is too heavy.")
             else:
                 current_room["items"].remove(globals()["item_id"])
