@@ -9,13 +9,9 @@ import random
 
 def main():
 
-    #Intro
-    print("""
-            Game Title
+    intro()
 
-            Intro.....
-
-            """)
+    global player_name
 
     player_name = input("Enter your name: ")
 
@@ -44,7 +40,6 @@ def menu(exits, room_items, inv_items): # Not inv items
 
     print("\nType HELP for list of commands")
     print("What do you want to do?")
-    
     user_command = input("...")
 
     input_normalised = normalise_input(user_command)
@@ -247,101 +242,25 @@ def items_list(items):
 
 def execute_take(item_id):
     
-    current_items = []
+    for items in range(0, len(current_room["items"])):
+        if item_id == current_room["items"][items]["id"]:
+            inventory.append(current_room["items"][items])
+            del current_room["items"][items]
+            return
+        else:
+            print("You cannot take that.")
 
-    for items in current_room["items"]:        
-        current_items.append(items["id"])
-        
-    if item_id in current_items:
-        if item_id == "biscuits":
-            inventory.append(item_biscuits)
-            weight_check = check_mass()
-            if weight_check > 3:
-                inventory.remove(item_biscuits)
-                print("Cannot take item. Inventory is too heavy.")
-            else:
-                current_room["items"].remove(item_biscuits)
-                
-        elif item_id == "id":
-            inventory.append(globals()["item_id"])
-            weight_check = check_mass()
-            if weight_check > 3:
-                inventory.remove(globals()["item_id"])
-                print("Cannot take item. Inventory is too heavy.")
-            else:
-                current_room["items"].remove(globals()["item_id"])
-                
-        elif item_id == "money":
-            inventory.append(item_money)
-            weight_check = check_mass()
-            if weight_check > 3:
-                inventory.remove(item_money)
-                print("Cannot take item. Inventory is too heavy.")
-            else:
-                current_room["items"].remove(item_money)
-                
-        elif item_id == "laptop":
-            inventory.append(item_laptop)
-            weight_check = check_mass()
-            if weight_check > 3:
-                inventory.remove(item_laptop)
-                print("Cannot take item. Inventory is too heavy.")
-            else:
-                current_room["items"].remove(item_laptop)
-                
-        elif item_id == "pen":
-            inventory.append(item_pen)
-            weight_check = check_mass()
-            if weight_check > 3:
-                inventory.remove(item_pen)
-                print("Cannot take item. Inventory is too heavy.")
-            else:
-                current_room["items"].remove(item_pen)
-                
-        elif item_id == "handbook":
-            inventory.append(item_handbook)
-            weight_check = check_mass()
-            if weight_check > 3:
-                inventory.remove(item_handbook)
-                print("Cannot take item. Inventory is too heavy.")
-            else:
-                current_room["items"].remove(item_handbook)
-    else:
-        print("You cannot take that")
 
 def execute_drop(item_id):
 
-    inventory_items = []
 
-    for items in inventory:
-        inventory_items.append(items["id"])
-    
-    if item_id in inventory_items:
-        if item_id == "id":
-            inventory.remove(globals()["item_id"])
-            current_room["items"].append(globals()["item_id"])
-            
-        elif item_id == "laptop":
-            inventory.remove(item_laptop)
-            current_room["items"].append(item_laptop)
-            
-        elif item_id == "money":
-            inventory.remove(item_money)
-            current_room["items"].append(item_money)
-            
-        elif item_id == "biscuits":
-            inventory.remove(item_biscuits)
-            current_room["items"].append(item_biscuits)
-            
-        elif item_id == "pen":
-            inventory.remove(item_pen)
-            current_room["items"].append(item_pen)
-            
-        elif item_id == "handbook":
-            inventory.remove(item_handbook)
-            current_room["items"].append(item_handbook)
-    else:
-        print("You cannot drop that")    
+    for items in range(0, len(inventory)):
+        if item_id == inventory[items]["id"]:
+            current_room["items"].append(inventory[items])
+            del inventory[items]
+            return
+        else:
+            print("You cannot drop that.")    
 
 if __name__ == "__main__":    
     main()

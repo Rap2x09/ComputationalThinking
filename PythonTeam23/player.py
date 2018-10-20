@@ -3,9 +3,9 @@ from map import rooms
 
 inventory = [item_id, item_laptop, item_money]
 
-# Start game at the reception
+# Start game at the Lobby
 current_room = rooms["Lobby"]
-#player_name = ""
+player_name = ""
 
 def age_verification(name):
 
@@ -35,5 +35,15 @@ def print_welcome(name):
 
     print("\nWelcome " + name + ",")
     print("blah blah blah")
+
+def intro():
+
+    #Intro
+    print("""
+            Game Title
+
+            Intro.....
+
+            """)
 
     
