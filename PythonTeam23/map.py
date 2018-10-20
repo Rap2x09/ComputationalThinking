@@ -1,7 +1,7 @@
 from items import *
 
-room_reception = {
-    "name": "Reception",
+room_lobby = {
+    "name": "Lobby",
 
     "description":
     """You are in a maze of twisty little passages, all alike.
@@ -24,7 +24,7 @@ room_admins = {
 room. Inside you notice Matt "MJ" John and Simon Jones. They
 ignore you. To the north is the reception.""",
 
-    "exits":  {"north": "Reception"},
+    "exits":  {"north": "Lobby"},
 
     "items": []
 }
@@ -51,7 +51,7 @@ room_parking = {
 You can go south to the COMSC reception, or east to the
 general office.""",
 
-    "exits": {"east": "Office", "south": "Reception"},
+    "exits": {"east": "Office", "south": "Lobby"},
 
     "items": []
 }
@@ -73,7 +73,7 @@ Queen's Buildings.""",
 
 
 rooms = {
-    "Reception": room_reception,
+    "Lobby": room_lobby,
     "Admins": room_admins,
     "Tutor": room_tutor,
     "Parking": room_parking,
