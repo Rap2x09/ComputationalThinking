@@ -1,4 +1,4 @@
-from map import rooms
+from map import *
 from player import *
 from items import *
 from gameparser import *
@@ -23,7 +23,7 @@ def main():
 
     while True:
 
-        command = menu(current_room["exits"], current_room["items"], inventory)
+        command = ask_for_command(current_room["exits"], current_room["items"], inventory)
 
         execute_command(command)
 
@@ -36,10 +36,10 @@ def main():
         #    print("Game over")
         #    break
         
-def menu(exits, room_items, inv_items): # Not inv items
+def ask_for_command(exits, room_items, inv_items): # Not inv items
 
-    print("\nType HELP for list of commands")
-    print("What do you want to do?")
+    #print("\nType HELP for list of commands")
+    print("\nWhat do you want to do?  (Type HELP for list of commands)")
     user_command = input("...")
 
     input_normalised = normalise_input(user_command)
@@ -252,7 +252,6 @@ def execute_take(item_id):
 
 
 def execute_drop(item_id):
-
 
     for items in range(0, len(inventory)):
         if item_id == inventory[items]["id"]:
